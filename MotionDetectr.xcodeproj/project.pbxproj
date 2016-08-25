@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		CB4A33751D6560B700354FF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33741D6560B700354FF8 /* AppDelegate.swift */; };
-		CB4A33771D6560B700354FF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33761D6560B700354FF8 /* ViewController.swift */; };
+		CB4A33771D6560B700354FF8 /* DataCollectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33761D6560B700354FF8 /* DataCollectorVC.swift */; };
 		CB4A337A1D6560B700354FF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4A33781D6560B700354FF8 /* Main.storyboard */; };
 		CB4A337D1D6560B700354FF8 /* MotionDetectr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB4A337B1D6560B700354FF8 /* MotionDetectr.xcdatamodeld */; };
 		CB4A337F1D6560B700354FF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB4A337E1D6560B700354FF8 /* Assets.xcassets */; };
 		CB4A33821D6560B700354FF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4A33801D6560B700354FF8 /* LaunchScreen.storyboard */; };
 		CB4A338D1D6560B700354FF8 /* MotionDetectrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A338C1D6560B700354FF8 /* MotionDetectrTests.swift */; };
 		CB4A33981D6560B700354FF8 /* MotionDetectrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33971D6560B700354FF8 /* MotionDetectrUITests.swift */; };
+		CB4A33B41D6D28A400354FF8 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4A33AD1D6D27D200354FF8 /* Charts.framework */; };
+		CB4A33B51D6D28A400354FF8 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB4A33AD1D6D27D200354FF8 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB4A33BA1D6D2A3A00354FF8 /* DataPlotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33B91D6D2A3A00354FF8 /* DataPlotVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,12 +35,61 @@
 			remoteGlobalIDString = CB4A33701D6560B700354FF8;
 			remoteInfo = MotionDetectr;
 		};
+		CB4A33AC1D6D27D200354FF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		CB4A33AE1D6D27D200354FF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		CB4A33B01D6D27D200354FF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		CB4A33B21D6D27D200354FF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		CB4A33B61D6D28A500354FF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CB4A33B81D6D28A500354FF8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB4A33B51D6D28A400354FF8 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CB4A33711D6560B700354FF8 /* MotionDetectr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionDetectr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4A33741D6560B700354FF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB4A33761D6560B700354FF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CB4A33761D6560B700354FF8 /* DataCollectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectorVC.swift; sourceTree = "<group>"; };
 		CB4A33791D6560B700354FF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB4A337C1D6560B700354FF8 /* MotionDetectr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MotionDetectr.xcdatamodel; sourceTree = "<group>"; };
 		CB4A337E1D6560B700354FF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +101,8 @@
 		CB4A33931D6560B700354FF8 /* MotionDetectrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotionDetectrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4A33971D6560B700354FF8 /* MotionDetectrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetectrUITests.swift; sourceTree = "<group>"; };
 		CB4A33991D6560B700354FF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
+		CB4A33B91D6D2A3A00354FF8 /* DataPlotVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPlotVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB4A33B41D6D28A400354FF8 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,9 +154,10 @@
 		CB4A33731D6560B700354FF8 /* MotionDetectr */ = {
 			isa = PBXGroup;
 			children = (
+				CB4A33BB1D6D2A4D00354FF8 /* Controller */,
 				CB4A33741D6560B700354FF8 /* AppDelegate.swift */,
-				CB4A33761D6560B700354FF8 /* ViewController.swift */,
 				CB4A33781D6560B700354FF8 /* Main.storyboard */,
+				CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */,
 				CB4A337E1D6560B700354FF8 /* Assets.xcassets */,
 				CB4A33801D6560B700354FF8 /* LaunchScreen.storyboard */,
 				CB4A33831D6560B700354FF8 /* Info.plist */,
@@ -128,6 +184,26 @@
 			path = MotionDetectrUITests;
 			sourceTree = "<group>";
 		};
+		CB4A33A61D6D27D100354FF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB4A33AD1D6D27D200354FF8 /* Charts.framework */,
+				CB4A33AF1D6D27D200354FF8 /* Charts.framework */,
+				CB4A33B11D6D27D200354FF8 /* Charts.framework */,
+				CB4A33B31D6D27D200354FF8 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB4A33BB1D6D2A4D00354FF8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB4A33761D6560B700354FF8 /* DataCollectorVC.swift */,
+				CB4A33B91D6D2A3A00354FF8 /* DataPlotVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,10 +214,12 @@
 				CB4A336D1D6560B700354FF8 /* Sources */,
 				CB4A336E1D6560B700354FF8 /* Frameworks */,
 				CB4A336F1D6560B700354FF8 /* Resources */,
+				CB4A33B81D6D28A500354FF8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CB4A33B71D6D28A500354FF8 /* PBXTargetDependency */,
 			);
 			name = MotionDetectr;
 			productName = MotionDetectr;
@@ -196,6 +274,7 @@
 				TargetAttributes = {
 					CB4A33701D6560B700354FF8 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 8WUCP656VM;
 					};
 					CB4A33871D6560B700354FF8 = {
 						CreatedOnToolsVersion = 7.3;
@@ -218,6 +297,12 @@
 			mainGroup = CB4A33681D6560B700354FF8;
 			productRefGroup = CB4A33721D6560B700354FF8 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CB4A33A61D6D27D100354FF8 /* Products */;
+					ProjectRef = CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CB4A33701D6560B700354FF8 /* MotionDetectr */,
@@ -226,6 +311,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CB4A33AD1D6D27D200354FF8 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = CB4A33AC1D6D27D200354FF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CB4A33AF1D6D27D200354FF8 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = CB4A33AE1D6D27D200354FF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CB4A33B11D6D27D200354FF8 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = CB4A33B01D6D27D200354FF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CB4A33B31D6D27D200354FF8 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = CB4A33B21D6D27D200354FF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CB4A336F1D6560B700354FF8 /* Resources */ = {
@@ -260,7 +376,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB4A337D1D6560B700354FF8 /* MotionDetectr.xcdatamodeld in Sources */,
-				CB4A33771D6560B700354FF8 /* ViewController.swift in Sources */,
+				CB4A33BA1D6D2A3A00354FF8 /* DataPlotVC.swift in Sources */,
+				CB4A33771D6560B700354FF8 /* DataCollectorVC.swift in Sources */,
 				CB4A33751D6560B700354FF8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +410,11 @@
 			isa = PBXTargetDependency;
 			target = CB4A33701D6560B700354FF8 /* MotionDetectr */;
 			targetProxy = CB4A33941D6560B700354FF8 /* PBXContainerItemProxy */;
+		};
+		CB4A33B71D6D28A500354FF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = CB4A33B61D6D28A500354FF8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -405,10 +527,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MotionDetectr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "viswanath-srikant.MotionDetectr";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -416,10 +542,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MotionDetectr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "viswanath-srikant.MotionDetectr";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
