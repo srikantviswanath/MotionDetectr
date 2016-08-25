@@ -21,26 +21,40 @@ class DataPlotVC: UIViewController, ChartViewDelegate {
     var xAccDataValues: [Double]!
     var yAccDataValues: [Double]!
     var zAccDataValues: [Double]!
+    var resultantScalar = [Double]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         xPlotChartView.delegate = self
+        xPlotChartView.descriptionText = "X Acceleration"
+        
         yPlotChartView.delegate = self
+        yPlotChartView.descriptionText = "Y Acceleration"
+        
         zPlotChartView.delegate = self
+        zPlotChartView.descriptionText = "Z Acceleration"
+        
         setChart(timeValues, accValues: xAccDataValues, plotChartView: xPlotChartView)
         setChart(timeValues, accValues: yAccDataValues, plotChartView: yPlotChartView)
         setChart(timeValues, accValues: zAccDataValues, plotChartView: zPlotChartView)
+        xPlotChartView.hidden = false
+        yPlotChartView.hidden = false
+        zPlotChartView.hidden = false
     }
     
     @IBAction func SegmentedControlToggled(sender: UISegmentedControl) {
         switch PillButton.selectedSegmentIndex {
         case 0:
+            xPlotChartView.backgroundColor = UIColor(red: 255, green: 175, blue: 0, alpha: 1)
             setChart(timeValues, accValues: xAccDataValues, plotChartView: xPlotChartView)
             setChart(timeValues, accValues: yAccDataValues, plotChartView: yPlotChartView)
             setChart(timeValues, accValues: zAccDataValues, plotChartView: zPlotChartView)
             yPlotChartView.hidden = false
             zPlotChartView.hidden = false
         case 1:
+            resultantScalar = computeResultantScalar(xAccDataValues, yData: yAccDataValues, zData: zAccDataValues)
+            setChart(timeValues, accValues: resultantScalar, plotChartView: xPlotChartView)
+            xPlotChartView.backgroundColor = UIColor.darkGrayColor()
             yPlotChartView.hidden = true
             zPlotChartView.hidden = true
         default:
@@ -73,4 +87,5 @@ class DataPlotVC: UIViewController, ChartViewDelegate {
         plotChartView.data = plotData
         plotChartView.drawGridBackgroundEnabled = false
     }
+    
 }

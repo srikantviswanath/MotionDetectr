@@ -30,26 +30,18 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rk4-GL-ovP">
-                                <rect key="frame" x="249" y="265" width="110" height="74"/>
+                                <rect key="frame" x="245" y="284" width="83" height="32"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5X-wK-WBS">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="32"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5X-wK-WBS">
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="32"/>
                                         <color key="backgroundColor" red="0.28235294119999998" green="0.6705882353" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <state key="normal" title="Components &gt;">
+                                        <state key="normal" title="Plot Data &gt;">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="PlotOrthogonalComponents:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S9j-iQ-GO7"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pf0-42-EJ1">
-                                        <rect key="frame" x="0.0" y="42" width="110" height="32"/>
-                                        <color key="backgroundColor" red="1" green="0.54637824329999995" blue="0.42412429909999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <state key="normal" title="Cumulative &gt;">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -107,19 +99,19 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pjm-6G-oCs">
-                                <rect key="frame" x="20" y="58" width="560" height="530"/>
+                                <rect key="frame" x="20" y="58" width="560" height="490"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fwb-tr-6FJ" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="122"/>
-                                        <color key="backgroundColor" red="1" green="0.73691958999999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="152"/>
+                                        <color key="backgroundColor" red="1" green="0.68529027256578878" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMY-uu-P1u" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="127" width="560" height="276"/>
+                                        <rect key="frame" x="0.0" y="157" width="560" height="164"/>
                                         <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HmG-sc-plj" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="408" width="560" height="122"/>
+                                        <rect key="frame" x="0.0" y="326" width="560" height="164"/>
                                         <color key="backgroundColor" red="0.28235294119999998" green="0.6705882353" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -128,6 +120,12 @@
                                     <constraint firstItem="sMY-uu-P1u" firstAttribute="top" secondItem="Pjm-6G-oCs" secondAttribute="top" constant="128" id="1GM-5t-oSX"/>
                                     <constraint firstItem="sMY-uu-P1u" firstAttribute="centerY" secondItem="Pjm-6G-oCs" secondAttribute="centerY" id="t5R-cm-GKE"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1GM-5t-oSX"/>
+                                        <exclude reference="t5R-cm-GKE"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -18,6 +18,7 @@
 		CB4A33B41D6D28A400354FF8 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4A33AD1D6D27D200354FF8 /* Charts.framework */; };
 		CB4A33B51D6D28A400354FF8 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB4A33AD1D6D27D200354FF8 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CB4A33BA1D6D2A3A00354FF8 /* DataPlotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33B91D6D2A3A00354FF8 /* DataPlotVC.swift */; };
+		CB4A33C11D6E902000354FF8 /* ComputeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33C01D6E902000354FF8 /* ComputeUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		CB4A33991D6560B700354FF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB4A33A51D6D27D100354FF8 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 		CB4A33B91D6D2A3A00354FF8 /* DataPlotVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPlotVC.swift; sourceTree = "<group>"; };
+		CB4A33C01D6E902000354FF8 /* ComputeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputeUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		CB4A33731D6560B700354FF8 /* MotionDetectr */ = {
 			isa = PBXGroup;
 			children = (
+				CB4A33BF1D6E8F9700354FF8 /* Utils */,
 				CB4A33BB1D6D2A4D00354FF8 /* Controller */,
 				CB4A33741D6560B700354FF8 /* AppDelegate.swift */,
 				CB4A33781D6560B700354FF8 /* Main.storyboard */,
@@ -202,6 +205,14 @@
 				CB4A33B91D6D2A3A00354FF8 /* DataPlotVC.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		CB4A33BF1D6E8F9700354FF8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CB4A33C01D6E902000354FF8 /* ComputeUtil.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB4A337D1D6560B700354FF8 /* MotionDetectr.xcdatamodeld in Sources */,
+				CB4A33C11D6E902000354FF8 /* ComputeUtil.swift in Sources */,
 				CB4A33BA1D6D2A3A00354FF8 /* DataPlotVC.swift in Sources */,
 				CB4A33771D6560B700354FF8 /* DataCollectorVC.swift in Sources */,
 				CB4A33751D6560B700354FF8 /* AppDelegate.swift in Sources */,

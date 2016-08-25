@@ -38,7 +38,7 @@ class DataCollectorVC: UIViewController {
         } else {
             motionManager.stopDeviceMotionUpdates()
             StartStopButton.setTitle("START", forState: .Normal)
-            StartStopButton.backgroundColor = UIColor.greenColor()
+            StartStopButton.backgroundColor = UIColor(red: 0, green: 191, blue: 165, alpha: 1)
         }
     }
     
@@ -50,16 +50,10 @@ class DataCollectorVC: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destVC = segue.destinationViewController as? DataPlotVC {
-            let senderBtn = sender as! UIButton
             destVC.timeValues = computeTimeSeries(xAccData, sampleTime: SAMPLE_TIME)
-            switch senderBtn.currentTitle! {
-            case "Components >":
-                destVC.xAccDataValues = xAccData
-                destVC.yAccDataValues = yAccData
-                destVC.zAccDataValues = zAccData
-            default:
-                print("Burrrrrio!")
-            }
+            destVC.xAccDataValues = xAccData
+            destVC.yAccDataValues = yAccData
+            destVC.zAccDataValues = zAccData
         }
     }
     
