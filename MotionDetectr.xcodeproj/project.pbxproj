@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB0305BB1D78DA63005AD93E /* ChartUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0305BA1D78DA63005AD93E /* ChartUtil.swift */; };
 		CB4A33751D6560B700354FF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33741D6560B700354FF8 /* AppDelegate.swift */; };
 		CB4A33771D6560B700354FF8 /* DataCollectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A33761D6560B700354FF8 /* DataCollectorVC.swift */; };
 		CB4A337A1D6560B700354FF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4A33781D6560B700354FF8 /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CB0305BA1D78DA63005AD93E /* ChartUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartUtil.swift; sourceTree = "<group>"; };
 		CB4A33711D6560B700354FF8 /* MotionDetectr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionDetectr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4A33741D6560B700354FF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB4A33761D6560B700354FF8 /* DataCollectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectorVC.swift; sourceTree = "<group>"; };
@@ -133,6 +135,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08BFC4AC2343EFF683A5B639 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0BFB2DF77D428796EDABD174 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CB4A33681D6560B700354FF8 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +156,8 @@
 				CB4A338B1D6560B700354FF8 /* MotionDetectrTests */,
 				CB4A33961D6560B700354FF8 /* MotionDetectrUITests */,
 				CB4A33721D6560B700354FF8 /* Products */,
+				0BFB2DF77D428796EDABD174 /* Pods */,
+				08BFC4AC2343EFF683A5B639 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				CB4A33C01D6E902000354FF8 /* ComputeUtil.swift */,
+				CB0305BA1D78DA63005AD93E /* ChartUtil.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -390,6 +409,7 @@
 				CB4A33C11D6E902000354FF8 /* ComputeUtil.swift in Sources */,
 				CB4A33BA1D6D2A3A00354FF8 /* DataPlotVC.swift in Sources */,
 				CB4A33771D6560B700354FF8 /* DataCollectorVC.swift in Sources */,
+				CB0305BB1D78DA63005AD93E /* ChartUtil.swift in Sources */,
 				CB4A33751D6560B700354FF8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +562,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MotionDetectr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "viswanath-srikant.MotionDetectr";
@@ -557,6 +578,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MotionDetectr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "viswanath-srikant.MotionDetectr";
@@ -630,6 +652,7 @@
 				CB4A339E1D6560B700354FF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB4A339F1D6560B700354FF8 /* Build configuration list for PBXNativeTarget "MotionDetectrTests" */ = {
 			isa = XCConfigurationList;
@@ -638,6 +661,7 @@
 				CB4A33A11D6560B700354FF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB4A33A21D6560B700354FF8 /* Build configuration list for PBXNativeTarget "MotionDetectrUITests" */ = {
 			isa = XCConfigurationList;
@@ -646,6 +670,7 @@
 				CB4A33A41D6560B700354FF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

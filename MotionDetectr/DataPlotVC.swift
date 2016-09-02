@@ -37,27 +37,23 @@ class DataPlotVC: UIViewController, ChartViewDelegate {
         setChart(timeValues, accValues: xAccDataValues, plotChartView: xPlotChartView)
         setChart(timeValues, accValues: yAccDataValues, plotChartView: yPlotChartView)
         setChart(timeValues, accValues: zAccDataValues, plotChartView: zPlotChartView)
-        xPlotChartView.hidden = false
-        yPlotChartView.hidden = false
-        zPlotChartView.hidden = false
+        print("Y,X correlation:\(computeCorrelationCoeff(yAccDataValues, Y: xAccDataValues))")
+        print("Z,Y correlation:\(computeCorrelationCoeff(zAccDataValues, Y: yAccDataValues))")
+        print("X,Z correlation:\(computeCorrelationCoeff(xAccDataValues, Y: zAccDataValues))")
     }
     
     @IBAction func SegmentedControlToggled(sender: UISegmentedControl) {
         switch PillButton.selectedSegmentIndex {
         case 0:
-            xPlotChartView.backgroundColor = UIColor(red: 255, green: 175, blue: 0, alpha: 1)
+            xPlotChartView.backgroundColor = UIColor.blueColor()
+            yPlotChartView.backgroundColor = UIColor.redColor()
+            zPlotChartView.backgroundColor = UIColor.brownColor()
             setChart(timeValues, accValues: xAccDataValues, plotChartView: xPlotChartView)
             setChart(timeValues, accValues: yAccDataValues, plotChartView: yPlotChartView)
             setChart(timeValues, accValues: zAccDataValues, plotChartView: zPlotChartView)
-            yPlotChartView.hidden = false
             zPlotChartView.hidden = false
-        case 1:
-            resultantScalar = computeResultantScalar(xAccDataValues, yData: yAccDataValues, zData: zAccDataValues)
-            setChart(timeValues, accValues: resultantScalar, plotChartView: xPlotChartView)
-            xPlotChartView.backgroundColor = UIColor.darkGrayColor()
-            yPlotChartView.hidden = true
-            zPlotChartView.hidden = true
-        default:
+            
+            default:
             print("Washing powder Nirma")
         }
         
@@ -65,27 +61,6 @@ class DataPlotVC: UIViewController, ChartViewDelegate {
     
     @IBAction func backBtnPressed(sender: UIButton) {
         performSegueWithIdentifier("FetchMoreData", sender: nil)
-    }
-    
-    func setChart(timeValues: [Double], accValues: [Double], plotChartView: LineChartView) {
-        var yValDataEntries: [ChartDataEntry] = []
-        
-        for dataPointIdx in 0 ..< timeValues.count {
-            yValDataEntries.append(ChartDataEntry(x: timeValues[dataPointIdx], y: accValues[dataPointIdx]))
-        }
-        
-        let plotDataSet = LineChartDataSet(values: yValDataEntries, label: "")
-        plotDataSet.axisDependency = .Left
-        plotDataSet.setColor(UIColor.whiteColor())
-        plotDataSet.setCircleColor(UIColor.whiteColor())
-        plotDataSet.circleRadius = 0.1
-        
-        var plotDataSets: [ILineChartDataSet] = [LineChartDataSet]()
-        plotDataSets.append(plotDataSet)
-        
-        let plotData: LineChartData = LineChartData(dataSets: plotDataSets)
-        plotChartView.data = plotData
-        plotChartView.drawGridBackgroundEnabled = false
     }
     
 }

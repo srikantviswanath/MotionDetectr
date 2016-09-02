@@ -29,35 +29,26 @@
                                     <action selector="StartStopBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Opp-Ow-vHQ"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rk4-GL-ovP">
-                                <rect key="frame" x="245" y="284" width="83" height="32"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5X-wK-WBS">
-                                        <rect key="frame" x="0.0" y="0.0" width="83" height="32"/>
-                                        <color key="backgroundColor" red="0.28235294119999998" green="0.6705882353" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <state key="normal" title="Plot Data &gt;">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="PlotOrthogonalComponents:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S9j-iQ-GO7"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nSd-UT-lnH" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="20" width="560" height="522"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rk4-GL-ovP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C3H-aZ-0Hg"/>
-                            <constraint firstItem="rk4-GL-ovP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="O6X-DN-LrY"/>
+                            <constraint firstItem="Rbm-7p-cGp" firstAttribute="top" secondItem="nSd-UT-lnH" secondAttribute="bottom" constant="8" id="2a4-po-GcJ"/>
+                            <constraint firstItem="nSd-UT-lnH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Hhz-E8-jFE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rbm-7p-cGp" secondAttribute="bottom" constant="20" id="RzS-pJ-8Tg"/>
                             <constraint firstItem="Rbm-7p-cGp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VI1-9e-pVE"/>
                             <constraint firstItem="Rbm-7p-cGp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aMC-Du-UVE"/>
+                            <constraint firstItem="nSd-UT-lnH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aS3-YN-jRW"/>
+                            <constraint firstItem="nSd-UT-lnH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nwQ-yD-4So"/>
                             <constraint firstItem="Rbm-7p-cGp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="yAu-ry-4bG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YdD-HM-id8"/>
                     <connections>
+                        <outlet property="PlotChartView" destination="nSd-UT-lnH" id="Rbf-Ek-EJG"/>
                         <outlet property="StartStopButton" destination="Rbm-7p-cGp" id="6Pr-xh-sLZ"/>
                         <segue destination="4ha-z8-TEr" kind="showDetail" identifier="PlotCollectedData" id="jxr-OG-sVh"/>
                     </connections>
@@ -85,7 +76,7 @@
                                 </constraints>
                                 <segments>
                                     <segment title="Individual Components"/>
-                                    <segment title="Squared Sum"/>
+                                    <segment title="Pair Plots"/>
                                 </segments>
                                 <connections>
                                     <action selector="SegmentedControlToggled:" destination="4ha-z8-TEr" eventType="valueChanged" id="diO-Fw-neJ"/>
@@ -104,6 +95,7 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fwb-tr-6FJ" customClass="LineChartView" customModule="Charts">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="152"/>
                                         <color key="backgroundColor" red="1" green="0.68529027256578878" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMY-uu-P1u" customClass="LineChartView" customModule="Charts">
                                         <rect key="frame" x="0.0" y="157" width="560" height="164"/>

@@ -8,29 +8,39 @@
 
 import UIKit
 import CoreMotion
+import Charts
 
-class DataCollectorVC: UIViewController {
+class DataCollectorVC: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var StartStopButton: UIButton!
+    @IBOutlet weak var PlotChartView: LineChartView!
     
     var xAccData = [Double]()
     var yAccData = [Double]()
     var zAccData = [Double]()
+    var smoothedAccZ = LowPassFilterSignal(currentValue: 0.0, filterFactor: 0.75)
     let motionManager = CMMotionManager()
-    let SAMPLE_TIME = 0.01
+    let SAMPLE_TIME = 0.1
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        PlotChartView.delegate = self
+        PlotChartView.backgroundColor = UIColor.blueColor()
     }
     
     @IBAction func StartStopBtnPressed(sender: UIButton) {
         if StartStopButton.currentTitle == "START" {
+            zAccData = [Double]()
             if motionManager.deviceMotionAvailable {
                 motionManager.deviceMotionUpdateInterval = SAMPLE_TIME
                 motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) { [weak self] (data: CMDeviceMotion?, error: NSError?) in
+                    let rawAccZ = (data?.userAcceleration.z)!
                     self?.xAccData.append((data?.userAcceleration.x)!)
                     self?.yAccData.append((data?.userAcceleration.y)!)
-                    self?.zAccData.append((data?.userAcceleration.z)!)
+                    self?.zAccData.append(self!.smoothedAccZ.update(rawAccZ))
+                    setChart(self!.computeTimeSeries(self!.zAccData, sampleTime: self!.SAMPLE_TIME), accValues: self!.zAccData, plotChartView: self!.PlotChartView)
+                    self!.PlotChartView.notifyDataSetChanged()
                 }
             }
             StartStopButton.setTitle("STOP", forState: .Normal)
