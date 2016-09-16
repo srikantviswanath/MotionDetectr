@@ -18,6 +18,11 @@ class DataCollectorVC: UIViewController, ChartViewDelegate {
     var xAccData = [Double]()
     var yAccData = [Double]()
     var zAccData = [Double]()
+    var pitch = [Double]()
+    var roll = [Double]()
+    var yaw = [Double]()
+    var smoothedAccX = LowPassFilterSignal(currentValue: 0.0, filterFactor: 0.75)
+    var smoothedAccY = LowPassFilterSignal(currentValue: 0.0, filterFactor: 0.75)
     var smoothedAccZ = LowPassFilterSignal(currentValue: 0.0, filterFactor: 0.75)
     let motionManager = CMMotionManager()
     let SAMPLE_TIME = 0.1
@@ -32,14 +37,25 @@ class DataCollectorVC: UIViewController, ChartViewDelegate {
     @IBAction func StartStopBtnPressed(sender: UIButton) {
         if StartStopButton.currentTitle == "START" {
             zAccData = [Double]()
+            pitch = [Double]()
             if motionManager.deviceMotionAvailable {
                 motionManager.deviceMotionUpdateInterval = SAMPLE_TIME
                 motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) { [weak self] (data: CMDeviceMotion?, error: NSError?) in
-                    let rawAccZ = (data?.userAcceleration.z)!
-                    self?.xAccData.append((data?.userAcceleration.x)!)
-                    self?.yAccData.append((data?.userAcceleration.y)!)
-                    self?.zAccData.append(self!.smoothedAccZ.update(rawAccZ))
-                    setChart(self!.computeTimeSeries(self!.zAccData, sampleTime: self!.SAMPLE_TIME), accValues: self!.zAccData, plotChartView: self!.PlotChartView)
+                    if let attitude = data?.attitude { //Record rotation along the 3 axises
+                        self?.pitch.append(attitude.pitch * 180/M_PI)
+                        self!.roll.append(attitude.roll * 180/M_PI)
+                        self?.yaw.append(attitude.yaw * 180/M_PI)
+                    }
+                    if let userAcc = data?.userAcceleration {
+                        let rawAccX = userAcc.x
+                        let rawAccY = userAcc.y
+                        let rawAccZ = userAcc.z
+                        self?.xAccData.append(self!.smoothedAccX.update(rawAccX))
+                        self?.yAccData.append(self!.smoothedAccY.update(rawAccY))
+                        self?.zAccData.append(self!.smoothedAccZ.update(rawAccZ))
+                        
+                    }
+                    setChart(self!.computeTimeSeries(self!.pitch, sampleTime: self!.SAMPLE_TIME), accValues: self!.pitch, plotChartView: self!.PlotChartView)
                     self!.PlotChartView.notifyDataSetChanged()
                 }
             }
