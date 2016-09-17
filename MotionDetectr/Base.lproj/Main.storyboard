@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,38 +18,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbm-7p-cGp">
-                                <rect key="frame" x="20" y="550" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <state key="normal" title="START">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="StartStopBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Opp-Ow-vHQ"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nSd-UT-lnH" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="20" width="560" height="522"/>
+                                <rect key="frame" x="20" y="20" width="560" height="465"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-Uf-Jcc">
+                                <rect key="frame" x="20" y="496" width="560" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0r8-4O-BqE"/>
+                                    <constraint firstAttribute="height" constant="70" id="O58-gP-G3U"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0r8-4O-BqE"/>
+                                    </mask>
+                                </variation>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYn-g2-ZbZ">
+                                <rect key="frame" x="277" y="570" width="47" height="30"/>
+                                <state key="normal" title="START"/>
+                                <connections>
+                                    <action selector="StartStopBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T6f-75-W63"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Rbm-7p-cGp" firstAttribute="top" secondItem="nSd-UT-lnH" secondAttribute="bottom" constant="8" id="2a4-po-GcJ"/>
+                            <constraint firstItem="jYn-g2-ZbZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GZp-Zc-B0f"/>
                             <constraint firstItem="nSd-UT-lnH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Hhz-E8-jFE"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rbm-7p-cGp" secondAttribute="bottom" constant="20" id="RzS-pJ-8Tg"/>
-                            <constraint firstItem="Rbm-7p-cGp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VI1-9e-pVE"/>
-                            <constraint firstItem="Rbm-7p-cGp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aMC-Du-UVE"/>
+                            <constraint firstItem="jYn-g2-ZbZ" firstAttribute="top" secondItem="2Ub-Uf-Jcc" secondAttribute="bottom" constant="4" id="Irh-yt-79Y"/>
+                            <constraint firstItem="2Ub-Uf-Jcc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Lm4-4r-kWW"/>
+                            <constraint firstItem="2Ub-Uf-Jcc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="UKv-aT-sud"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jYn-g2-ZbZ" secondAttribute="bottom" id="Xde-8j-RtN"/>
                             <constraint firstItem="nSd-UT-lnH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aS3-YN-jRW"/>
                             <constraint firstItem="nSd-UT-lnH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nwQ-yD-4So"/>
-                            <constraint firstItem="Rbm-7p-cGp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="yAu-ry-4bG"/>
+                            <constraint firstItem="2Ub-Uf-Jcc" firstAttribute="top" secondItem="nSd-UT-lnH" secondAttribute="bottom" constant="8" id="oGR-h1-Wcy"/>
+                            <constraint firstItem="2Ub-Uf-Jcc" firstAttribute="top" secondItem="nSd-UT-lnH" secondAttribute="bottom" constant="8" id="taL-sL-FCE"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="taL-sL-FCE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="YdD-HM-id8"/>
                     <connections>
                         <outlet property="PlotChartView" destination="nSd-UT-lnH" id="Rbf-Ek-EJG"/>
-                        <outlet property="StartStopButton" destination="Rbm-7p-cGp" id="6Pr-xh-sLZ"/>
+                        <outlet property="PlotPicker" destination="2Ub-Uf-Jcc" id="XdA-BO-hVo"/>
+                        <outlet property="StartStopButton" destination="jYn-g2-ZbZ" id="uMX-No-uVT"/>
                         <segue destination="4ha-z8-TEr" kind="showDetail" identifier="PlotCollectedData" id="jxr-OG-sVh"/>
                     </connections>
                 </viewController>

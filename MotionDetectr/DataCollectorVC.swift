@@ -10,14 +10,17 @@ import UIKit
 import CoreMotion
 import Charts
 
-class DataCollectorVC: UIViewController, ChartViewDelegate {
+class DataCollectorVC: UIViewController, ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var StartStopButton: UIButton!
     @IBOutlet weak var PlotChartView: LineChartView!
+    @IBOutlet weak var PlotPicker: UIPickerView!
     
+    var pickerViewTitles = ["X Acceleration", "Y Acceleration", "Z Acceleration", "Pitch", "Roll", "Yaw"]
     var xAccData = [Double]()
     var yAccData = [Double]()
     var zAccData = [Double]()
+    var plottingData = [Double]()
     var pitch = [Double]()
     var roll = [Double]()
     var yaw = [Double]()
@@ -31,6 +34,8 @@ class DataCollectorVC: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         PlotChartView.delegate = self
+        PlotPicker.delegate = self
+        PlotPicker.dataSource = self
         PlotChartView.backgroundColor = UIColor.blueColor()
     }
     
@@ -60,11 +65,9 @@ class DataCollectorVC: UIViewController, ChartViewDelegate {
                 }
             }
             StartStopButton.setTitle("STOP", forState: .Normal)
-            StartStopButton.backgroundColor = UIColor.redColor()
         } else {
             motionManager.stopDeviceMotionUpdates()
             StartStopButton.setTitle("START", forState: .Normal)
-            StartStopButton.backgroundColor = UIColor(red: 0, green: 191, blue: 165, alpha: 1)
         }
     }
     
@@ -89,6 +92,40 @@ class DataCollectorVC: UIViewController, ChartViewDelegate {
             timeSeries.append(sampleTime * Double(dataValueIdx))
         }
         return timeSeries
+    }
+    
+    //MARK: Picker delegate methods
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerViewTitles.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerViewTitles[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let timeValues = computeTimeSeries(xAccData, sampleTime: SAMPLE_TIME)
+        switch row {
+        case 0:
+            setChart(timeValues, accValues: xAccData, plotChartView: PlotChartView)
+        case 1:
+            setChart(timeValues, accValues: yAccData, plotChartView: PlotChartView)
+        case 2:
+            setChart(timeValues, accValues: zAccData, plotChartView: PlotChartView)
+        case 3:
+            setChart(timeValues, accValues: pitch, plotChartView: PlotChartView)
+        case 4:
+            setChart(timeValues, accValues: roll, plotChartView: PlotChartView)
+        case 5:
+            setChart(timeValues, accValues: yaw, plotChartView: PlotChartView)
+        default:
+            print("jajjarabhooto")
+        }
     }
 }
 
