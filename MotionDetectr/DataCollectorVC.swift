@@ -30,6 +30,8 @@ class DataCollectorVC: UIViewController, ChartViewDelegate, UIPickerViewDelegate
     let motionManager = CMMotionManager()
     let SAMPLE_TIME = 0.1
     
+    var localMinima = [[Double]]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +62,7 @@ class DataCollectorVC: UIViewController, ChartViewDelegate, UIPickerViewDelegate
                         self?.zAccData.append(self!.smoothedAccZ.update(rawAccZ))
                         
                     }
-                    setChart(self!.computeTimeSeries(self!.pitch, sampleTime: self!.SAMPLE_TIME), accValues: self!.pitch, plotChartView: self!.PlotChartView)
+                    setChart(self!.computeTimeSeries(self!.zAccData, sampleTime: self!.SAMPLE_TIME), accValues: self!.zAccData, plotChartView: self!.PlotChartView)
                     self!.PlotChartView.notifyDataSetChanged()
                 }
             }
@@ -68,6 +70,10 @@ class DataCollectorVC: UIViewController, ChartViewDelegate, UIPickerViewDelegate
         } else {
             motionManager.stopDeviceMotionUpdates()
             StartStopButton.setTitle("START", forState: .Normal)
+            localMinima = extractIndividualReps(zAccData)
+            print(localMinima)
+            //setChart(computeTimeSeries(localMinima, sampleTime: SAMPLE_TIME), accValues: localMinima, plotChartView: PlotChartView)
+
         }
     }
     
