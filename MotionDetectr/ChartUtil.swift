@@ -33,3 +33,12 @@ func setChart(timeValues: [Double], accValues: [Double], plotChartView: LineChar
         print("Boorio, no data yet")
     }
 }
+
+
+func computeTimeSeries(dataValuesArray: [AnyObject], sampleTime: Double, startIndex: Int = 0) -> [Double]{
+    var timeSeries = [Double]()
+    for dataValueIdx in 0 ..< dataValuesArray.count {
+        timeSeries.append((sampleTime * Double(startIndex)) + (sampleTime * Double(dataValueIdx)))
+    }
+    return timeSeries
+}

@@ -30,9 +30,6 @@ class DataCollectorVC: UIViewController, ChartViewDelegate, UIPickerViewDelegate
     let motionManager = CMMotionManager()
     let SAMPLE_TIME = 0.1
     
-    var localMinima = [[Double]]()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         PlotChartView.delegate = self
@@ -62,7 +59,7 @@ class DataCollectorVC: UIViewController, ChartViewDelegate, UIPickerViewDelegate
                         self?.zAccData.append(self!.smoothedAccZ.update(rawAccZ))
                         
                     }
-                    setChart(self!.computeTimeSeries(self!.zAccData, sampleTime: self!.SAMPLE_TIME), accValues: self!.zAccData, plotChartView: self!.PlotChartView)
+                    setChart(computeTimeSeries(self!.zAccData, sampleTime: self!.SAMPLE_TIME), accValues: self!.zAccData, plotChartView: self!.PlotChartView)
                     self!.PlotChartView.notifyDataSetChanged()
                 }
             }
@@ -70,34 +67,24 @@ class DataCollectorVC: UIViewController, ChartViewDelegate, UIPickerViewDelegate
         } else {
             motionManager.stopDeviceMotionUpdates()
             StartStopButton.setTitle("START", forState: .Normal)
-            localMinima = extractIndividualReps(zAccData)
-            print(localMinima)
-            //setChart(computeTimeSeries(localMinima, sampleTime: SAMPLE_TIME), accValues: localMinima, plotChartView: PlotChartView)
 
         }
     }
     
-    @IBAction func PlotOrthogonalComponents(sender: UIButton) {
-        if xAccData.count > 1 {
-            performSegueWithIdentifier("PlotCollectedData", sender: sender)
-        }
+    @IBAction func ExtractReps(sender: UIButton) {
+        performSegueWithIdentifier("ExtractRepOut", sender: nil)
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destVC = segue.destinationViewController as? DataPlotVC {
             destVC.timeValues = computeTimeSeries(xAccData, sampleTime: SAMPLE_TIME)
             destVC.xAccDataValues = xAccData
             destVC.yAccDataValues = yAccData
             destVC.zAccDataValues = zAccData
+            destVC.pitch = pitch
+            destVC.roll = roll
+            destVC.yaw = yaw
         }
-    }
-    
-    func computeTimeSeries(dataValuesArray: [AnyObject], sampleTime: Double) -> [Double]{
-        var timeSeries = [Double]()
-        for dataValueIdx in 0 ..< dataValuesArray.count {
-            timeSeries.append(sampleTime * Double(dataValueIdx))
-        }
-        return timeSeries
     }
     
     //MARK: Picker delegate methods

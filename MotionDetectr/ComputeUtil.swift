@@ -88,15 +88,15 @@ func computeLocalExtrema(derivateData: [Double], extrema: String) -> [Int] {
 
 ///To identify each individual rep's start and end points. ( End point + 1 ) index corresponds to start point of next index
 
-func extractIndividualReps(rawData: [Double]) -> [[Double]] {
-    var setOfReps = [[Double]]()
+func extractIndividualReps(rawData: [Double]) -> [Dictionary<String, AnyObject>] {
+    var setOfReps = [[String: AnyObject]]()
     let firstDerivativeData = computeFirstOrderDerivative(rawData)
     var localMinimaPositions = computeLocalExtrema(firstDerivativeData, extrema: "minima")
     localMinimaPositions = localMinimaPositions.filter{rawData[$0] < 0}
     for minimaPosIdx in 0 ..< localMinimaPositions.count - 1 {
         let singleRep = rawData[localMinimaPositions[minimaPosIdx] ..< localMinimaPositions[minimaPosIdx + 1] + 1]
-        setOfReps.append(Array(singleRep))
+        setOfReps.append(["repData": Array(singleRep), "startingPoint":localMinimaPositions[minimaPosIdx]])
     }
-    setOfReps = setOfReps.filter {$0.count > 10} //drop the rep whose end points are less than 1.0 sec apart
+    setOfReps = setOfReps.filter {$0["repData"]!.count > 10} //drop the rep whose end points are less than 1.0 sec apart
     return setOfReps
 }

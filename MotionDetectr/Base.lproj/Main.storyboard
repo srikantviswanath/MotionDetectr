@@ -35,29 +35,42 @@
                                 </variation>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYn-g2-ZbZ">
-                                <rect key="frame" x="277" y="570" width="47" height="30"/>
+                                <rect key="frame" x="20" y="570" width="47" height="30"/>
                                 <state key="normal" title="START"/>
                                 <connections>
                                     <action selector="StartStopBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T6f-75-W63"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gu4-2F-dMF">
+                                <rect key="frame" x="513" y="570" width="67" height="30"/>
+                                <state key="normal" title="EXTRACT"/>
+                                <connections>
+                                    <action selector="ExtractReps:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SuW-1y-iJ3"/>
+                                    <action selector="StartStopBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QOM-ih-VgH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Gu4-2F-dMF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="8ZQ-g1-g6b"/>
+                            <constraint firstItem="Gu4-2F-dMF" firstAttribute="top" secondItem="2Ub-Uf-Jcc" secondAttribute="bottom" constant="4" id="8cd-uy-uAH"/>
                             <constraint firstItem="jYn-g2-ZbZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GZp-Zc-B0f"/>
                             <constraint firstItem="nSd-UT-lnH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Hhz-E8-jFE"/>
                             <constraint firstItem="jYn-g2-ZbZ" firstAttribute="top" secondItem="2Ub-Uf-Jcc" secondAttribute="bottom" constant="4" id="Irh-yt-79Y"/>
                             <constraint firstItem="2Ub-Uf-Jcc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Lm4-4r-kWW"/>
                             <constraint firstItem="2Ub-Uf-Jcc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="UKv-aT-sud"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jYn-g2-ZbZ" secondAttribute="bottom" id="Xde-8j-RtN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Gu4-2F-dMF" secondAttribute="bottom" id="Z9a-Kx-8Mm"/>
                             <constraint firstItem="nSd-UT-lnH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aS3-YN-jRW"/>
                             <constraint firstItem="nSd-UT-lnH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nwQ-yD-4So"/>
                             <constraint firstItem="2Ub-Uf-Jcc" firstAttribute="top" secondItem="nSd-UT-lnH" secondAttribute="bottom" constant="8" id="oGR-h1-Wcy"/>
+                            <constraint firstItem="jYn-g2-ZbZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qRd-Dt-2NH"/>
                             <constraint firstItem="2Ub-Uf-Jcc" firstAttribute="top" secondItem="nSd-UT-lnH" secondAttribute="bottom" constant="8" id="taL-sL-FCE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="taL-sL-FCE"/>
+                                <exclude reference="GZp-Zc-B0f"/>
                             </mask>
                         </variation>
                     </view>
@@ -66,7 +79,7 @@
                         <outlet property="PlotChartView" destination="nSd-UT-lnH" id="Rbf-Ek-EJG"/>
                         <outlet property="PlotPicker" destination="2Ub-Uf-Jcc" id="XdA-BO-hVo"/>
                         <outlet property="StartStopButton" destination="jYn-g2-ZbZ" id="uMX-No-uVT"/>
-                        <segue destination="4ha-z8-TEr" kind="showDetail" identifier="PlotCollectedData" id="jxr-OG-sVh"/>
+                        <segue destination="4ha-z8-TEr" kind="showDetail" identifier="ExtractRepOut" id="jxr-OG-sVh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -85,91 +98,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Qe-Rp-vhi">
-                                <rect key="frame" x="20" y="20" width="560" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="RSa-fm-wc0"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Individual Components"/>
-                                    <segment title="Pair Plots"/>
-                                </segments>
-                                <connections>
-                                    <action selector="SegmentedControlToggled:" destination="4ha-z8-TEr" eventType="valueChanged" id="diO-Fw-neJ"/>
-                                </connections>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUT-p9-12w">
-                                <rect key="frame" x="20" y="562" width="34" height="30"/>
+                                <rect key="frame" x="20" y="0.0" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="backBtnPressed:" destination="4ha-z8-TEr" eventType="touchUpInside" id="Ego-DA-wFP"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pjm-6G-oCs">
-                                <rect key="frame" x="20" y="58" width="560" height="490"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GPm-3s-Lul">
+                                <rect key="frame" x="20" y="38" width="560" height="446"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fwb-tr-6FJ" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="152"/>
-                                        <color key="backgroundColor" red="1" green="0.68529027256578878" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMY-uu-P1u" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="157" width="560" height="164"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cpu-5T-SZf" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="223"/>
                                         <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HmG-sc-plj" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="326" width="560" height="164"/>
-                                        <color key="backgroundColor" red="0.28235294119999998" green="0.6705882353" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFe-JN-Y2T" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="223" width="560" height="223"/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.24112482330000001" blue="0.23177199570000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Img-NM-Kgn">
+                                <rect key="frame" x="20" y="570" width="59" height="30"/>
+                                <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="previousBtnPresses:" destination="4ha-z8-TEr" eventType="touchUpInside" id="nCR-oN-hVt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg5-Ta-b5M">
+                                <rect key="frame" x="548" y="570" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextBtnPressed:" destination="4ha-z8-TEr" eventType="touchUpInside" id="cWR-oJ-eg9"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbU-SY-Sfr">
+                                <rect key="frame" x="20" y="492" width="560" height="70"/>
                                 <constraints>
-                                    <constraint firstItem="sMY-uu-P1u" firstAttribute="top" secondItem="Pjm-6G-oCs" secondAttribute="top" constant="128" id="1GM-5t-oSX"/>
-                                    <constraint firstItem="sMY-uu-P1u" firstAttribute="centerY" secondItem="Pjm-6G-oCs" secondAttribute="centerY" id="t5R-cm-GKE"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="ULY-gA-QkS"/>
+                                    <constraint firstAttribute="height" constant="60" id="a5y-PJ-Hwu"/>
+                                    <constraint firstAttribute="height" constant="70" id="x8v-sb-Pk9"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="1GM-5t-oSX"/>
-                                        <exclude reference="t5R-cm-GKE"/>
+                                        <exclude reference="a5y-PJ-Hwu"/>
                                     </mask>
                                 </variation>
-                            </stackView>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wSq-WO-tuX" firstAttribute="top" secondItem="Img-NM-Kgn" secondAttribute="bottom" id="6Qs-At-TFt"/>
                             <constraint firstItem="wSq-WO-tuX" firstAttribute="top" secondItem="cUT-p9-12w" secondAttribute="bottom" constant="8" id="7v3-5a-f5l"/>
-                            <constraint firstItem="Pjm-6G-oCs" firstAttribute="top" secondItem="5Qe-Rp-vhi" secondAttribute="bottom" constant="10" id="GDq-iz-CIv"/>
-                            <constraint firstItem="5Qe-Rp-vhi" firstAttribute="top" secondItem="GhX-xR-u1B" secondAttribute="bottom" id="Gmy-bI-pOn"/>
-                            <constraint firstItem="wSq-WO-tuX" firstAttribute="top" secondItem="Pjm-6G-oCs" secondAttribute="bottom" constant="25" id="HEL-0p-Bgt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5Qe-Rp-vhi" secondAttribute="trailing" constant="10" id="NdK-O5-wYs"/>
-                            <constraint firstItem="5Qe-Rp-vhi" firstAttribute="centerX" secondItem="kA6-DZ-v7N" secondAttribute="centerX" id="RwO-vJ-cAG"/>
-                            <constraint firstItem="5Qe-Rp-vhi" firstAttribute="leading" secondItem="kA6-DZ-v7N" secondAttribute="leadingMargin" id="Tul-Ic-cdZ"/>
-                            <constraint firstItem="wSq-WO-tuX" firstAttribute="top" secondItem="Pjm-6G-oCs" secondAttribute="bottom" constant="136" id="ZSj-hz-29V"/>
-                            <constraint firstItem="wSq-WO-tuX" firstAttribute="top" secondItem="Pjm-6G-oCs" secondAttribute="bottom" constant="40" id="an9-9m-9Bz"/>
-                            <constraint firstItem="5Qe-Rp-vhi" firstAttribute="trailing" secondItem="kA6-DZ-v7N" secondAttribute="trailingMargin" id="bIx-jl-Gr9"/>
-                            <constraint firstItem="Pjm-6G-oCs" firstAttribute="leading" secondItem="kA6-DZ-v7N" secondAttribute="leadingMargin" id="eyl-dH-wPo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Pjm-6G-oCs" secondAttribute="trailing" id="hwR-iV-IOz"/>
+                            <constraint firstItem="nbU-SY-Sfr" firstAttribute="top" secondItem="GPm-3s-Lul" secondAttribute="bottom" constant="8" id="Caf-uW-K3K"/>
+                            <constraint firstItem="cUT-p9-12w" firstAttribute="top" secondItem="kA6-DZ-v7N" secondAttribute="topMargin" id="MSn-26-WmZ"/>
+                            <constraint firstItem="Img-NM-Kgn" firstAttribute="leading" secondItem="kA6-DZ-v7N" secondAttribute="leadingMargin" id="fzH-Wy-Ggn"/>
+                            <constraint firstItem="GPm-3s-Lul" firstAttribute="leading" secondItem="kA6-DZ-v7N" secondAttribute="leadingMargin" id="gGd-T9-ETm"/>
+                            <constraint firstItem="nbU-SY-Sfr" firstAttribute="trailing" secondItem="kA6-DZ-v7N" secondAttribute="trailingMargin" id="lKX-c6-6lk"/>
+                            <constraint firstItem="wSq-WO-tuX" firstAttribute="top" secondItem="fg5-Ta-b5M" secondAttribute="bottom" id="mRO-TE-qKS"/>
+                            <constraint firstItem="GPm-3s-Lul" firstAttribute="top" secondItem="cUT-p9-12w" secondAttribute="bottom" constant="8" id="mZD-r2-1lR"/>
                             <constraint firstItem="cUT-p9-12w" firstAttribute="leading" secondItem="kA6-DZ-v7N" secondAttribute="leadingMargin" id="o8m-k5-6tN"/>
-                            <constraint firstItem="wSq-WO-tuX" firstAttribute="top" secondItem="Pjm-6G-oCs" secondAttribute="bottom" constant="8" id="xLM-WT-FDU"/>
-                            <constraint firstItem="Pjm-6G-oCs" firstAttribute="top" secondItem="5Qe-Rp-vhi" secondAttribute="bottom" constant="10" id="xhv-K5-v6K"/>
+                            <constraint firstItem="GPm-3s-Lul" firstAttribute="trailing" secondItem="kA6-DZ-v7N" secondAttribute="trailingMargin" id="thQ-q5-ayG"/>
+                            <constraint firstItem="fg5-Ta-b5M" firstAttribute="trailing" secondItem="kA6-DZ-v7N" secondAttribute="trailingMargin" id="ueg-Mj-Yih"/>
+                            <constraint firstItem="fg5-Ta-b5M" firstAttribute="top" secondItem="nbU-SY-Sfr" secondAttribute="bottom" constant="8" id="v5V-6V-Osc"/>
+                            <constraint firstItem="nbU-SY-Sfr" firstAttribute="leading" secondItem="kA6-DZ-v7N" secondAttribute="leadingMargin" id="yX4-0C-MTy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="NdK-O5-wYs"/>
-                                <exclude reference="GDq-iz-CIv"/>
-                                <exclude reference="HEL-0p-Bgt"/>
-                                <exclude reference="ZSj-hz-29V"/>
-                                <exclude reference="xLM-WT-FDU"/>
+                                <exclude reference="7v3-5a-f5l"/>
                             </mask>
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
-                        <outlet property="PillButton" destination="5Qe-Rp-vhi" id="3df-is-gO6"/>
-                        <outlet property="xPlotChartView" destination="Fwb-tr-6FJ" id="vHn-Ir-zI1"/>
-                        <outlet property="yPlotChartView" destination="sMY-uu-P1u" id="kvo-0O-DAI"/>
-                        <outlet property="zPlotChartView" destination="HmG-sc-plj" id="wAG-ru-6rN"/>
+                        <outlet property="FeaturePicker" destination="nbU-SY-Sfr" id="cWc-Ke-8ze"/>
+                        <outlet property="RepPlotChartView" destination="GFe-JN-Y2T" id="XjI-eb-o1D"/>
+                        <outlet property="StreamOfRepsPlotChartView" destination="Cpu-5T-SZf" id="xz0-NZ-344"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="FetchMoreData" id="tg9-Z1-Rs7"/>
                     </connections>
                 </viewController>
